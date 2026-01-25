@@ -2,9 +2,9 @@ from astropy.time import Time
 from astropy.coordinates import EarthLocation
 import astropy.units as u
 
-from stars import get_visible_stars
-from solar_system import get_solar_system_objects
-from constellations import get_constellations
+from .stars import get_visible_stars
+from .solar_system import get_solar_system_objects
+from .constellations import get_constellations
 
 def generate_sky(lat, lon, datetime_utc, mag_limit=6.0, force_all_constellations=True, include_all_solar_objects=True):
     """
@@ -43,5 +43,6 @@ def generate_sky(lat, lon, datetime_utc, mag_limit=6.0, force_all_constellations
         "solar_system": solar_system,
         "constellations": constellations
     }
+
 
 
