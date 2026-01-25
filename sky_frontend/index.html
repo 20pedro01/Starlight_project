@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">✨ Starlight</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Intro Section -->
+        <section class="intro">
+            <h1>Mapa estelar de tu fecha especial</h1>
+            <p>
+                ¿Cómo era el cielo ese día especial, o cómo será en una fecha importante en el futuro?
+                ¡Ve las estrellas, planetas y constelaciones exactamente como aparecen desde cualquier lugar de la
+                Tierra, en cualquier momento!
+                Crea cartas hermosas y precisas del cielo para tu fecha única: cumpleaños, aniversarios, compromisos o
+                cualquier ocasión memorable.
+            </p>
+        </section>
+
+        <!-- Builder Interface -->
+        <div class="builder-grid">
+            <!-- Controls -->
+            <aside class="controls-panel">
+                <h2>Personaliza tu momento</h2>
+                <form id="skyForm">
+                    <div class="form-group">
+                        <label for="datetime">Fecha y hora</label>
+                        <input type="datetime-local" id="datetime" required>
+                    </div>
+
+                    <!-- Location Section -->
+                    <div class="form-group">
+                        <label>Ubicación</label>
+                        <div class="search-box">
+                            <input type="text" id="locationSearch" placeholder="Buscar ciudad (ej. Madrid)...">
+                            <button type="button" id="searchBtn" class="btn-icon">🔍</button>
+                        </div>
+                        <div id="mapContainer"></div>
+                        <small class="hint">Selecciona un punto en el mapa o busca una ciudad.</small>
+
+                        <div class="form-row" style="margin-top: 0.5rem;">
+                            <div class="form-group">
+                                <label for="lat">Latitud</label>
+                                <input type="number" id="lat" step="0.0001" placeholder="20.689" value="20.689"
+                                    readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="lon">Longitud</label>
+                                <input type="number" id="lon" step="0.0001" placeholder="-88.201" value="-88.201"
+                                    readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient">Para (destinatario)</label>
+                        <input type="text" id="recipient" placeholder="Ej. Ana & Carlos" maxlength="40">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje especial (opcional)</label>
+                        <textarea id="message" rows="3" placeholder="El cielo cuando nos conocimos..."
+                            maxlength="120"></textarea>
+                        <small class="hint">Máximo 120 caracteres</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="generateBtn">
+                        <span class="icon">✨</span> Generar mapa
+                    </button>
+                </form>
+            </aside>
+
+            <!-- Preview -->
+            <section class="preview-panel">
+                <h2>Vista previa</h2>
+                <div class="canvas-container" id="canvasContainer">
+                    <canvas id="skyCanvas" width="1200" height="1550"></canvas>
+                    <div id="loadingOverlay" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Calculando estrellas...</p>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <div style="display: flex; gap: 1rem; width: 100%;">
+                        <button id="downloadBtn" class="btn btn-secondary" disabled>
+                            📥 Imagen PNG
+                        </button>
+                        <button id="downloadPdfBtn" class="btn btn-secondary" disabled>
+                            📄 PDF Carta
+                        </button>
+                    </div>
+                    <p class="status-msg" id="statusMsg"></p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Starlight Project. Creado con ❤️ y Python.</p>
+    </footer>
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
