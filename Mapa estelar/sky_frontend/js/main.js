@@ -1,4 +1,4 @@
-const API_URL = "/generate";
+const API_URL = "https://starlight-project-3.onrender.com";
 
 let map;
 let marker;
@@ -442,3 +442,4 @@ function generateMockData() {
         constellations: []
     };
 }
+
