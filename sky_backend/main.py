@@ -1,4 +1,4 @@
-from sky_engine import generate_sky
+from .sky_engine import generate_sky
 import json
 
 if __name__ == "__main__":
@@ -21,3 +21,4 @@ if __name__ == "__main__":
     print(f"Se encontraron {len(full_sky['stars'])} estrellas visibles")
     print(f"Se encontraron {len(full_sky['solar_system'])} objetos del sistema solar (Sol, Luna y planetas)")
     print(f"Se encontraron {len(full_sky['constellations'])} constelaciones")
+
