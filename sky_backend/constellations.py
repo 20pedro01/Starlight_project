@@ -81,7 +81,7 @@ def get_constellations(time, location, force_all_segments=False):
                 # Check visibility of centroid (optional, or pass if constellation is visible)
                 # We add it if the constellation has lines
                 
-                from constellation_names import iau_names
+                from .constellation_names import iau_names
                 full_name = iau_names.get(const_id, const_id)
                 
                 constellations_list.append({
@@ -105,5 +105,6 @@ if __name__ == "__main__":
     consts = get_constellations(time, location, force_all_segments=True)
     print(f"Constelaciones encontradas: {len(consts)}")
     print(json.dumps(consts[:3], indent=2))  # muestra las 3 primeras para no saturar
+
 
 
