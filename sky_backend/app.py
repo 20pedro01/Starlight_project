@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
-from sky_engine import generate_sky
+from .sky_engine import generate_sky
 import os
 
 app = FastAPI(title="Sky Map API")
@@ -52,4 +52,5 @@ def generate_sky_map(request: SkyRequest):
 # ========================
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
