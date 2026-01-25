@@ -1,4 +1,4 @@
-const API_URL = "/generate";
+const API_URL = "https://web-production-af44d.up.railway.app/generate";
 
 let map;
 let marker;
@@ -442,3 +442,4 @@ function generateMockData() {
         constellations: []
     };
 }
+
