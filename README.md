@@ -19,11 +19,12 @@
 ## 📂 Estructura del Proyecto
 
 ```text
-Mapa estelar/
+root/
 │
 ├── DEPLOYMENT.md          # Guía detallada para desplegar en la nube
 ├── Procfile               # Configuración de arranque para Render/Heroku
 ├── README.md              # Este archivo
+├── requirements.txt       # Dependencias de Python
 │
 ├── sky_backend/           # Lógica del Servidor (Python/FastAPI)
 │   ├── data/              # Datos estáticos (ej. líneas de constelaciones)
@@ -32,7 +33,6 @@ Mapa estelar/
 │   ├── constellation_names.py # Mapeo de nombres IAU
 │   ├── main.py            # Script de prueba manual
 │   ├── models.py          # Modelos de datos
-│   ├── requirements.txt   # Dependencias de Python
 │   ├── sky_engine.py      # Motor principal de generación
 │   ├── solar_system.py    # Cálculo de planetas, Sol y Luna
 │   └── stars.py           # Consulta de catálogo estelar
@@ -82,3 +82,4 @@ Para subir el proyecto a internet (Railway, Render, Netlify), consulta el archiv
 
 © 2026 Starlight Project.
 Creado por Pedro Cauich.
+
