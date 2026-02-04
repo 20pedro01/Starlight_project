@@ -18,8 +18,11 @@ def ensure_constellation_data():
         os.makedirs(DATA_DIR)
     if not os.path.exists(DATA_PATH):
         print(f"Descargando {DATA_FILE}...")
-        urllib.request.urlretrieve(CONSTELLATION_URL, DATA_PATH)
-        print(f"{DATA_FILE} descargado correctamente.")
+        try:
+            urllib.request.urlretrieve(CONSTELLATION_URL, DATA_PATH)
+            print(f"{DATA_FILE} descargado correctamente.")
+        except Exception as e:
+            print(f"Error descargando constelaciones: {e}")
 
 def get_constellations(time, location, force_all_segments=False):
     """
@@ -30,8 +33,12 @@ def get_constellations(time, location, force_all_segments=False):
     """
     ensure_constellation_data()
 
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open(DATA_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"Error leyendo archivo de constelaciones: {e}")
+        return []
 
     constellations_list = []
 
@@ -104,7 +111,4 @@ if __name__ == "__main__":
 
     consts = get_constellations(time, location, force_all_segments=True)
     print(f"Constelaciones encontradas: {len(consts)}")
-    print(json.dumps(consts[:3], indent=2))  # muestra las 3 primeras para no saturar
-
-
-
+    print(json.dumps(consts[:3], indent=2))
