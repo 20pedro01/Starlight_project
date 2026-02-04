@@ -1,0 +1,9 @@
+astropy
+astroquery
+numpy
+matplotlib
+fastapi
+uvicorn
+pandas
+pydantic
+slowapi
