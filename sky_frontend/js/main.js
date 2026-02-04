@@ -319,7 +319,8 @@ function drawMap(data, recipient, message) {
 function altAzToXY(alt, az, cx, cy, radius) {
     const r = radius * (1 - alt / 90);
     const theta = (az - 90) * (Math.PI / 180);
-    const x = cx + r * Math.cos(theta);
+    // Invert X for astronomical view (East on Left)
+    const x = cx - r * Math.cos(theta);
     const y = cy + r * Math.sin(theta);
     return { x, y };
 }
@@ -346,8 +347,8 @@ function drawCompassLabels(ctx, cx, cy, r) {
     const offset = 25;
     ctx.fillText("N", cx, cy - r - offset);
     ctx.fillText("S", cx, cy + r + offset);
-    ctx.fillText("E", cx + r + offset, cy);
-    ctx.fillText("O", cx - r - offset, cy);
+    ctx.fillText("E", cx - r - offset, cy); // East on Left
+    ctx.fillText("O", cx + r + offset, cy); // West on Right
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxCharsPerLine = 0) {
@@ -442,4 +443,3 @@ function generateMockData() {
         constellations: []
     };
 }
-
